@@ -25,7 +25,7 @@ const TweetList = () => {
     return () => {
       unsubscribeSnapshot();
     };
-  }, []);
+  }, [getAllDocs]);
 
   return (
     <div>

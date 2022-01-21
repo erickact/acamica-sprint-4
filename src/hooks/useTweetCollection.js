@@ -1,7 +1,6 @@
 import {
   addDoc,
   doc,
-  getDoc,
   deleteDoc,
   onSnapshot,
   updateDoc,
@@ -24,7 +23,7 @@ const useTweetCollection = () => {
   const deleteTweet = async (idDocument) => {
     const refDocument = doc(tweetsCollectionRef, idDocument);
     try {
-      const docDelete = await deleteDoc(refDocument);
+      await deleteDoc(refDocument);
     } catch (error) {
       console.error(error);
     }
