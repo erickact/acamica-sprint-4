@@ -9,7 +9,6 @@ const TweetList = () => {
 
   useEffect(() => {
     const unsubscribeSnapshot = getAllDocs((snapshot) => {
-      console.log(snapshot);
       setTweetList(
         snapshot.docs.map((doc) => {
           return {
