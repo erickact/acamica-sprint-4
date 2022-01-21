@@ -38,8 +38,8 @@ const useTweetCollection = () => {
 
   // update tweet
 
-  const updateTweet = async (idDocument, toUpdate) => {
-    const docRef = doc(tweetsCollectionRef, idDocument);
+  const updateTweet = async (idTweet, toUpdate) => {
+    const docRef = doc(tweetsCollectionRef, idTweet);
     await updateDoc(docRef, toUpdate);
   };
 
