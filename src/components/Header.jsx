@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
+import logout from "../assets/logout.svg";
+import back from "../assets/back.svg";
 
-const Header = () => {
+const Header = ({ showLogout }) => {
   const navigate = useNavigate();
 
   const { user, setUser } = useContext(UserContext);
@@ -15,13 +17,22 @@ const Header = () => {
 
   return (
     <div>
-      {user ? (
-        <button onClick={handleOnClick} className="">
-          LOGOUT
+      <div className="header">
+        <button type="button" className=" flex justify-center align-center">
+          <img src={back} alt="" />
+          <span className="font-white font-bold text-username">USERNAME</span>
         </button>
-      ) : (
-        <Link to="/login">LOGIN</Link>
-      )}
+        {showLogout && user && (
+          <button
+            type="button"
+            onClick={handleOnClick}
+            className="btn-logout font-bold"
+          >
+            <span>LOGOUT</span>
+            <img src={logout} alt="" className="logout" />
+          </button>
+        )}
+      </div>
     </div>
   );
 };

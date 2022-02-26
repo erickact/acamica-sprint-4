@@ -43,7 +43,7 @@ const AddTweetForm = () => {
           />
           <p className="max-words">200 max.</p>
           <div className=" flex justify-end">
-            <button className="btn-post bg-purple" type="submit">
+            <button className="btn-post font-bold bg-purple" type="submit">
               Post
             </button>
           </div>

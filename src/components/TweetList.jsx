@@ -1,35 +1,22 @@
-import React, { useState, useEffect } from "react";
-import useTweetCollection from "../hooks/useTweetCollection";
 import Tweet from "./Tweet";
 
-const TweetList = () => {
-  const [tweetList, setTweetList] = useState([]);
-
-  const { getAllDocs } = useTweetCollection();
-
-  useEffect(() => {
-    const unsubscribeSnapshot = getAllDocs((snapshot) => {
-      setTweetList(
-        snapshot.docs.map((doc) => {
-          return {
-            ...doc.data(),
-            id: doc.id,
-          };
-        })
-      );
-    });
-
-    // la siguiente funcion se va a ejecutar cuando el
-    // componente se desmonta
-    return () => {
-      unsubscribeSnapshot();
-    };
-  }, [getAllDocs]);
-
+const TweetList = ({ tweets = [] }) => {
   return (
     <div>
-      {tweetList && tweetList.length > 0
-        ? tweetList.map((element) => <Tweet key={element.id} {...element} />)
+      {/* <Tweet
+        text="Me desperté en el sofá de mi hermana con una resaca terrible y el deseo de asesinar a mi esposa"
+        id="id"
+        user={{
+          username: "Ericka",
+          color: "pink",
+          email: "castillo@gmail.com",
+          uid: "1234",
+          photoURL: "https://placeimg.com/200/200/any",
+        }}
+        likes={["123", "345", "678", "1234"]}
+      /> */}
+      {tweets && tweets.length > 0
+        ? tweets.map((element) => <Tweet key={element.id} {...element} />)
         : "No existen tweets"}
     </div>
   );
