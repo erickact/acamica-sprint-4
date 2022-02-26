@@ -4,6 +4,8 @@ import {
   deleteDoc,
   onSnapshot,
   updateDoc,
+  query,
+  where,
 } from "firebase/firestore";
 import { tweetsCollectionRef } from "../firebase/config";
 
@@ -35,6 +37,15 @@ const useTweetCollection = () => {
     return unsubscribe;
   };
 
+  // get tweets onsnapshots with query
+
+  const onSnapshotWithQuery = (callback, whereDetails) => {
+    const { left, middle, right = "" } = whereDetails;
+    const q = query(tweetsCollectionRef, where(left, middle, right));
+    const unsubscribe = onSnapshot(q, callback);
+    return unsubscribe;
+  };
+
   // update tweet
 
   const updateTweet = async (idTweet, toUpdate) => {
@@ -42,7 +53,13 @@ const useTweetCollection = () => {
     await updateDoc(docRef, toUpdate);
   };
 
-  return { addNewTweet, getAllDocs, deleteTweet, updateTweet };
+  return {
+    addNewTweet,
+    getAllDocs,
+    deleteTweet,
+    updateTweet,
+    onSnapshotWithQuery,
+  };
 };
 
 export default useTweetCollection;
