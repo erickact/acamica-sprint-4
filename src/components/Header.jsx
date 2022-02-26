@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import logout from "../assets/logout.svg";
 import back from "../assets/back.svg";
