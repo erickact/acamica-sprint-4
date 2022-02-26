@@ -23,10 +23,6 @@ const Login = () => {
 
   const { loginSocial } = useAuthentication();
 
-  // const handleClick = () => {
-  //   setUser("hola");
-  // };
-
   const handleOnChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
