@@ -5,12 +5,12 @@ import { getFirestore, collection } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB95NBB4mBMEwnbblXqV1dvCQ_rurlQgjA",
-  authDomain: "final-project-4-26cfc.firebaseapp.com",
-  projectId: "final-project-4-26cfc",
-  storageBucket: "final-project-4-26cfc.appspot.com",
-  messagingSenderId: "1010974068030",
-  appId: "1:1010974068030:web:0525ff825135fc1850306f",
+  apiKey: "AIzaSyBkAK7XCJUWdNZy9yLkC8TzLrmtpjuXhaI",
+  authDomain: "final-project-4-50315.firebaseapp.com",
+  projectId: "final-project-4-50315",
+  storageBucket: "final-project-4-50315.appspot.com",
+  messagingSenderId: "113577989443",
+  appId: "1:113577989443:web:5cf145655754b88287cbf6",
 };
 
 // Initialize Firebase
