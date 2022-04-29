@@ -1,9 +1,11 @@
 import Tweet from "./Tweet";
+import Wrapper from "./Wrapper";
 
 const TweetList = ({ tweets = [] }) => {
   return (
-    <div>
-      {/* <Tweet
+    <div className="tweet-list">
+      <Wrapper>
+        {/* <Tweet
         text="Me desperté en el sofá de mi hermana con una resaca terrible y el deseo de asesinar a mi esposa"
         id="id"
         user={{
@@ -15,9 +17,10 @@ const TweetList = ({ tweets = [] }) => {
         }}
         likes={["123", "345", "678", "1234"]}
       /> */}
-      {tweets && tweets.length > 0
-        ? tweets.map((element) => <Tweet key={element.id} {...element} />)
-        : "No existen tweets"}
+        {tweets && tweets.length > 0
+          ? tweets.map((element) => <Tweet key={element.id} {...element} />)
+          : "No existen tweets"}
+      </Wrapper>
     </div>
   );
 };

@@ -1,13 +1,17 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import logout from "../assets/logout.svg";
+import logoSmall from "../assets/logo-small.svg";
+import title from "../assets/title.svg";
 import back from "../assets/back.svg";
+import Wrapper from "./Wrapper";
 
-const Header = ({ showLogout }) => {
+const Header = ({ showLogout, user }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const { user, setUser } = useContext(UserContext);
+  const { user: currentUser, setUser } = useContext(UserContext);
 
   const handleOnClick = () => {
     localStorage.removeItem("USER");
@@ -15,14 +19,34 @@ const Header = ({ showLogout }) => {
     navigate("/login");
   };
 
-  return (
-    <div>
-      <div className="header">
-        <button type="button" className=" flex justify-center align-center">
+  let headerContent = (
+    <div className="header-content">
+      <img
+        className="header-home-photo"
+        src={currentUser?.photoURL}
+        alt={currentUser}
+      />
+      <img src={logoSmall} alt={logoSmall} />
+      <img src={title} alt={title} />
+    </div>
+  );
+
+  if (location.pathname !== "/") {
+    headerContent = (
+      <div className="header-content">
+        <button
+          type="button"
+          className=" flex justify-center align-center"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <img src={back} alt="" />
-          <span className="font-white font-bold text-username">USERNAME</span>
+          <span className="font-white font-bold text-username">
+            {user?.username || currentUser?.username}
+          </span>
         </button>
-        {showLogout && user && (
+        {location.pathname === "/me" && (
           <button
             type="button"
             onClick={handleOnClick}
@@ -33,7 +57,13 @@ const Header = ({ showLogout }) => {
           </button>
         )}
       </div>
-    </div>
+    );
+  }
+
+  return (
+    <header className="header">
+      <Wrapper>{headerContent}</Wrapper>
+    </header>
   );
 };
 

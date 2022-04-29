@@ -5,6 +5,7 @@ import heartOff from "../assets/heart-off.svg";
 import trash from "../assets/trash.svg";
 import useTweetCollection from "../hooks/useTweetCollection";
 import { UserContext } from "../contexts/UserContext";
+import { Link } from "react-router-dom";
 
 const Tweet = ({ createdAt, text, id, likes, user }) => {
   const { user: currentUser } = useContext(UserContext);
@@ -26,21 +27,25 @@ const Tweet = ({ createdAt, text, id, likes, user }) => {
   });
 
   return (
-    <div className="flex justify-center">
+    <div className="tweet flex">
       {user && (
         <img src={user.photoURL} alt={user.username} className="image-tweet" />
       )}
 
-      <div className="tweet">
-        <div>
-          <div>
+      <div className="flex-1">
+        <div className="flex">
+          <div className="flex-1">
             <h2
               style={{ backgroundColor: user.color }}
               className="font-bold username"
             >
-              {user.username}
+              {isTheSameUser ? (
+                <Link to="/me">{user.username}</Link>
+              ) : (
+                <Link to={`/users/${user.uid}`}>{user.username}</Link>
+              )}
             </h2>
-            <span className="font-white">{date}</span>
+            <span className="font-white">- {date}</span>
           </div>
 
           {isTheSameUser && (
@@ -49,11 +54,12 @@ const Tweet = ({ createdAt, text, id, likes, user }) => {
             </button>
           )}
         </div>
-        <div className="font-white ">
+
+        <div className="font-white mb-2 word-break ">
           <p>{text}</p>
         </div>
-        <div>
-          <button onClick={toggleLike} type="button">
+        <div className="flex align-center">
+          <button className="flex mr-2" onClick={toggleLike} type="button">
             {liked ? (
               <img src={heartOn} alt="" width="20px" />
             ) : (
