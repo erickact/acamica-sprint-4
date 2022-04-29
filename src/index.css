@@ -43,11 +43,6 @@ input:focus {
   color: #ffffff;
 }
 
-.font-heading {
-  font-family: "Inconsolata", monospace;
-  font-weight: 700;
-}
-
 .min-h-screen {
   min-height: 100vh;
 }
@@ -80,6 +75,9 @@ input:focus {
   cursor: pointer;
   opacity: 0;
 }
+.relative {
+  position: relative;
+}
 
 .options-colors > input:checked ~ div {
   border: 5px solid white;
@@ -108,8 +106,20 @@ input:focus {
   margin-bottom: 22px;
 }
 
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.mr-2 {
+  margin-right: 8px;
+}
+
 .text-40 {
   font-size: 40px;
+}
+
+.text-24 {
+  font-size: 24px;
 }
 
 .bg-black {
@@ -120,7 +130,7 @@ input:focus {
   color: #914d8b;
 }
 
-input::placeholder {
+::placeholder {
   color: #914d8b;
 }
 
@@ -139,8 +149,45 @@ input::placeholder {
   padding: 4px 8px;
   font-size: 20px;
 }
+
+.container-login {
+  width: 433px;
+  position: relative;
+}
+
+.copyright-1 {
+  font-size: 18px;
+  color: #914d8b;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: -200px;
+}
+
+.copyright-2 {
+  font-size: 18px;
+  color: #914d8b;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: -140px;
+}
+
+.beta {
+  color: red;
+}
+
 .tweet {
-  width: 500px;
+  border-bottom: 2px solid #60265b;
+  padding: 10px 12px;
+}
+
+.tweet:last-child {
+  border-bottom: 0;
+}
+
+.flex-1 {
+  flex: 1;
 }
 
 textarea:focus {
@@ -177,6 +224,10 @@ textarea::placeholder {
 
 .justify-end {
   justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .font-bold {
@@ -225,14 +276,69 @@ textarea::placeholder {
 }
 
 .header {
-  width: 605px;
-  margin: auto;
+  padding: 10px 0;
+}
+
+.header-content {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  align-items: center;
+}
+
+.header-home-photo {
+  border-radius: 50%;
+  height: 33px;
+  width: 33px;
 }
 
 .text-username {
   font-size: 20px;
   margin-left: 18px;
+}
+
+.profile-buttons {
+  background-color: #150714;
+  border-bottom: 2px solid #60265b;
+}
+
+.hero {
+  background-color: #150714;
+  padding: 30px 0;
+}
+.button-on {
+  width: 300px;
+  height: 46px;
+  font-size: 24px;
+  text-align: center;
+  background-color: #60265b;
+  color: #150714;
+}
+
+.button-off {
+  width: 300px;
+  height: 46px;
+  font-size: 24px;
+  text-align: center;
+  color: #60265b;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 605px;
+}
+
+.tweet-list {
+  margin-top: 16px;
+}
+
+.word-break {
+  word-break: break-word;
+}
+
+.percentage-line {
+  background-color: #00da76;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
 }

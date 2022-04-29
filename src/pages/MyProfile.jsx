@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import Header from "../components/Header";
 import TweetList from "../components/TweetList";
+import Wrapper from "../components/Wrapper";
+import Hero from "../components/Hero";
 import { UserContext } from "../contexts/UserContext";
 import useTweetCollection from "../hooks/useTweetCollection";
 
@@ -9,6 +11,7 @@ const MyProfile = () => {
   const { user } = useContext(UserContext);
   const [tweets, setTweets] = useState([]);
   const [favoriteTweets, setFavoriteTweets] = useState([]);
+  const [showList, setShowList] = useState(true);
 
   useEffect(() => {
     const unsubscribeSnapshot = onSnapshotWithQuery(
@@ -55,23 +58,28 @@ const MyProfile = () => {
   return (
     <div>
       <Header showLogout={true} />
-      <div>
-        <div className="flex justify-center align-center flex-column">
-          <img
-            className="image-profile"
-            src={user.photoURL}
-            alt="ericka-profile"
-          />
-          <h3
-            style={{ backgroundColor: user.color }}
-            className="font-bold username-profile"
+      <Hero user={user} />
+      <div className="profile-buttons">
+        <Wrapper>
+          <button
+            className={showList ? "button-on" : "button-off"}
+            onClick={() => setShowList(true)}
           >
-            {user.username}
-          </h3>
-        </div>
+            POSTS
+          </button>
+          <button
+            className={showList ? "button-off" : "button-on"}
+            onClick={() => setShowList(false)}
+          >
+            FAVORITES
+          </button>
+        </Wrapper>
       </div>
-      <TweetList tweets={tweets} />
-      <TweetList tweets={favoriteTweets} />
+      {showList ? (
+        <TweetList tweets={tweets} />
+      ) : (
+        <TweetList tweets={favoriteTweets} />
+      )}
     </div>
   );
 };

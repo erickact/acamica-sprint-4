@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import google from "../assets/google.png";
+import lorem from "../assets/lorem.png";
 import { UserContext } from "../contexts/UserContext";
 import useAuthentication from "../hooks/useAuthentication";
 
@@ -52,7 +53,7 @@ const Login = () => {
       <div className="font-white px-32 flex align-center justify-center flex-1">
         <div className="max-w-400">
           {user ? (
-            <form onSubmit={handleOnSubmit}>
+            <form onSubmit={handleOnSubmit} className="container-login">
               <div className="font-heading text-40 mb-32">
                 <h2>WELCOME</h2>
                 <h2 style={{ color: form.color }}>{user.displayName}!</h2>
@@ -60,7 +61,7 @@ const Login = () => {
               <div className="mb-32">
                 <label htmlFor="username"></label>
                 <input
-                  className="bg-black p-18 font-white"
+                  className="bg-black p-18 font-white text-24"
                   type="text"
                   id="username"
                   placeholder="Type you username"
@@ -69,7 +70,7 @@ const Login = () => {
                   onChange={handleOnChange}
                 />
               </div>
-              <p className="mb-22">Select your favorite color</p>
+              <p className="mb-22 text-24">Select your favorite color</p>
               <div className="flex mb-32">
                 {COLORS.map((color) => {
                   return (
@@ -88,17 +89,24 @@ const Login = () => {
               <button className="btn-primary" type="submit">
                 CONTINUE
               </button>
+              <p className="copyright-2">
+                &#169; 2020 Devs_United - <span className="beta">BETA</span>{" "}
+              </p>
             </form>
           ) : (
-            <>
-              <h1 className="font-heading mb-32">LOREM IPSUM DOLOR</h1>
-              <p className="mb-32">
+            <div className="container-login">
+              {/* <h1 className="font-heading mb-32">LOREM IPSUM DOLOR</h1> */}
+              <img src={lorem} className="mb-32" alt="lorem" />
+              <p className="mb-32 text-24">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
               </p>
               <button type="button" onClick={loginSocial}>
-                <img width="367" src={google} alt="google" />
+                <img width="400" src={google} alt="google" />
               </button>
-            </>
+              <p className="copyright-1">
+                &#169; 2020 Devs_United - <span className="beta">BETA</span>{" "}
+              </p>
+            </div>
           )}
         </div>
       </div>
