@@ -325,6 +325,7 @@ textarea::placeholder {
   background-color: #60265b;
   color: #150714;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .button-off {
@@ -334,6 +335,7 @@ textarea::placeholder {
   text-align: center;
   color: #60265b;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .wrapper {
