@@ -254,6 +254,13 @@ textarea::placeholder {
   height: 134px;
 }
 
+.image-profile-small {
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  margin-right: 20px;
+}
+
 .username-profile {
   font-size: 30px;
 }

@@ -44,7 +44,11 @@ const AddTweetForm = () => {
     <div className="flex justify-center bg-black py-20">
       <div>
         {user && (
-          <img className="image-profile" src={user.photoURL} alt="ericka" />
+          <img
+            className="image-profile-small"
+            src={user.photoURL}
+            alt="ericka"
+          />
         )}
       </div>
       <div className="flex align-center flex-column">
