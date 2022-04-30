@@ -50,7 +50,7 @@ const Tweet = ({ createdAt, text, id, likes, user }) => {
 
           {isTheSameUser && (
             <button type="button" onClick={() => deleteTweet(id)}>
-              <img src={trash} alt="" width="20px" />
+              <img className="pointer" src={trash} alt="" width="20px" />
             </button>
           )}
         </div>
@@ -59,7 +59,11 @@ const Tweet = ({ createdAt, text, id, likes, user }) => {
           <p>{text}</p>
         </div>
         <div className="flex align-center">
-          <button className="flex mr-2" onClick={toggleLike} type="button">
+          <button
+            className="flex mr-2 pointer"
+            onClick={toggleLike}
+            type="button"
+          >
             {liked ? (
               <img src={heartOn} alt="" width="20px" />
             ) : (

@@ -40,7 +40,6 @@ const Login = () => {
     const newUser = { ...user, ...form };
     setUser(newUser);
     localStorage.setItem("USER", JSON.stringify(newUser));
-    // react router me deja moverme entre rutas: navego al Home (el path tiene que ser el mismo)
     navigate("/");
   };
 
@@ -100,7 +99,7 @@ const Login = () => {
               <p className="mb-32 text-24">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
               </p>
-              <button type="button" onClick={loginSocial}>
+              <button className="pointer" type="button" onClick={loginSocial}>
                 <img width="400" src={google} alt="google" />
               </button>
               <p className="copyright-1">

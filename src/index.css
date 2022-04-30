@@ -59,6 +59,10 @@ input:focus {
   flex: 1;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .options-colors {
   width: 58px;
   height: 58px;
@@ -252,6 +256,7 @@ textarea::placeholder {
   border-radius: 50%;
   width: 134px;
   height: 134px;
+  margin-bottom: 14px;
 }
 
 .image-profile-small {
@@ -319,6 +324,7 @@ textarea::placeholder {
   text-align: center;
   background-color: #60265b;
   color: #150714;
+  font-weight: bold;
 }
 
 .button-off {
@@ -327,6 +333,7 @@ textarea::placeholder {
   font-size: 24px;
   text-align: center;
   color: #60265b;
+  font-weight: bold;
 }
 
 .wrapper {

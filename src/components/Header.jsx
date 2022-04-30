@@ -36,7 +36,7 @@ const Header = ({ showLogout, user }) => {
       <div className="header-content">
         <button
           type="button"
-          className=" flex justify-center align-center"
+          className=" flex justify-center align-center pointer"
           onClick={() => {
             navigate(-1);
           }}
@@ -50,7 +50,7 @@ const Header = ({ showLogout, user }) => {
           <button
             type="button"
             onClick={handleOnClick}
-            className="btn-logout font-bold"
+            className="btn-logout font-bold pointer"
           >
             <span>LOGOUT</span>
             <img src={logout} alt="" className="logout" />
