@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
+import isEqual from "lodash/isEqual";
 import Header from "../components/Header";
 import TweetList from "../components/TweetList";
 import Wrapper from "../components/Wrapper";
 import Hero from "../components/Hero";
 import { UserContext } from "../contexts/UserContext";
 import useTweetCollection from "../hooks/useTweetCollection";
+import { getTweetProperties } from "../utils";
 
 const MyProfile = () => {
   const { onSnapshotWithQuery } = useTweetCollection();
@@ -12,18 +14,19 @@ const MyProfile = () => {
   const [tweets, setTweets] = useState([]);
   const [favoriteTweets, setFavoriteTweets] = useState([]);
   const [showList, setShowList] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [favoriteTweetsIsLoading, setFavoriteTweetsIsLoading] = useState(false);
 
   useEffect(() => {
     const unsubscribeSnapshot = onSnapshotWithQuery(
       (snapshot) => {
-        setTweets(
-          snapshot.docs.map((doc) => {
-            return {
-              ...doc.data(),
-              id: doc.id,
-            };
-          })
-        );
+        setIsLoading(snapshot.metadata.hasPendingWrites);
+        const newTweets = snapshot.docs.map((doc) => getTweetProperties(doc));
+        const isChanging = !isEqual(newTweets, tweets);
+
+        if (isChanging) {
+          setTweets(newTweets);
+        }
       },
       { left: "user.uid", middle: "==", right: user?.uid }
     );
@@ -35,14 +38,13 @@ const MyProfile = () => {
   useEffect(() => {
     const unsubscribeSnapshot = onSnapshotWithQuery(
       (snapshot) => {
-        setFavoriteTweets(
-          snapshot.docs.map((doc) => {
-            return {
-              ...doc.data(),
-              id: doc.id,
-            };
-          })
-        );
+        setFavoriteTweetsIsLoading(snapshot.metadata.hasPendingWrites);
+        const newTweets = snapshot.docs.map((doc) => getTweetProperties(doc));
+        const isChanging = !isEqual(newTweets, favoriteTweets);
+
+        if (isChanging) {
+          setFavoriteTweets(newTweets);
+        }
       },
       { left: "likes", middle: "array-contains", right: user?.uid }
     );
@@ -76,9 +78,12 @@ const MyProfile = () => {
         </Wrapper>
       </div>
       {showList ? (
-        <TweetList tweets={tweets} />
+        <TweetList tweets={tweets} isLoading={isLoading} />
       ) : (
-        <TweetList tweets={favoriteTweets} />
+        <TweetList
+          tweets={favoriteTweets}
+          isLoading={favoriteTweetsIsLoading}
+        />
       )}
     </div>
   );

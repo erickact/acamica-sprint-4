@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import MyProfile from "./pages/MyProfile";
 import UserProfile from "./pages/UserProfile";
 import UserProvider from "./contexts/UserContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -11,10 +12,31 @@ function App() {
       <UserProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/me" element={<MyProfile />} />
-            <Route path="/users/:id" element={<UserProfile />} />
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/me"
+              element={
+                <ProtectedRoute>
+                  <MyProfile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/users/:id"
+              element={
+                <ProtectedRoute>
+                  <UserProfile />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </UserProvider>

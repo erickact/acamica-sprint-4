@@ -1,16 +1,12 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, createContext } from "react";
 
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    // obten el item que esta guardado en el localstorage llamado user
+  const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("USER");
-    //  si existe el item, quiero que actualices el user de mi contexto
-    savedUser && setUser(JSON.parse(savedUser));
-  }, []);
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
