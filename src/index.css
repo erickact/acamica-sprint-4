@@ -118,6 +118,10 @@ input:focus {
   margin-right: 8px;
 }
 
+.mt-2 {
+  margin-top: 8px;
+}
+
 .text-40 {
   font-size: 40px;
 }
@@ -357,4 +361,63 @@ textarea::placeholder {
   left: 0;
   bottom: 0;
   height: 2px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(56, 51, 51, 0.5);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close-button {
+  color: #60265b;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.modal-container {
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  max-height: 50vh;
+  max-width: 40vw;
+  position: relative;
+}
+
+.modal-heading {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.modal-children {
+  margin-bottom: 10px;
+}
+
+.modal-success-button {
+  background-color: #00da76;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-cancel-button {
+  background-color: #60265b;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
 }
