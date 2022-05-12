@@ -16,7 +16,7 @@ const useTweetCollection = () => {
     try {
       NProgress.start();
       const docRef = await addDoc(tweetsCollectionRef, tweetObject);
-      console.log("Document written with ID: ", docRef.id);
+      // console.log("Document written with ID: ", docRef.id);
       // get updated docs
     } catch (e) {
       console.error("Error adding document: ", e);

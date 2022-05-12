@@ -100,6 +100,7 @@ input:focus {
   text-align: center;
   font-family: "Inconsolata", monospace;
   background-color: #00da76;
+  cursor: pointer;
 }
 
 .mb-32 {

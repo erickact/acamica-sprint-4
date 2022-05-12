@@ -36,7 +36,6 @@ const Login = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
     const newUser = { ...user, ...form };
     setUser(newUser);
     localStorage.setItem("USER", JSON.stringify(newUser));

@@ -10,7 +10,6 @@ const useAuthentication = () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
-      console.log(user);
       setUser(user);
     } catch (error) {
       console.log(error.message);
