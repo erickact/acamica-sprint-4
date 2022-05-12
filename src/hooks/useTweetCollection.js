@@ -8,16 +8,20 @@ import {
   where,
 } from "firebase/firestore";
 import { tweetsCollectionRef } from "../firebase/config";
+import NProgress from "nprogress";
 
 const useTweetCollection = () => {
   // add Doc (add tweet)
   const addNewTweet = async (tweetObject) => {
     try {
+      NProgress.start();
       const docRef = await addDoc(tweetsCollectionRef, tweetObject);
       console.log("Document written with ID: ", docRef.id);
       // get updated docs
     } catch (e) {
       console.error("Error adding document: ", e);
+    } finally {
+      NProgress.done();
     }
   };
 
@@ -25,9 +29,13 @@ const useTweetCollection = () => {
   const deleteTweet = async (idDocument) => {
     const refDocument = doc(tweetsCollectionRef, idDocument);
     try {
+      NProgress.start();
+
       await deleteDoc(refDocument);
     } catch (error) {
       console.error(error);
+    } finally {
+      NProgress.done();
     }
   };
 
